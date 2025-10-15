@@ -4,16 +4,16 @@ import CustomText from '../../components/CustomText';
 
 // Datos de ejemplo para las categorías
 const categories = [
-  { id: '1', title: 'Música', color: 'bg-red-500' },
-  { id: '2', title: 'Podcasts', color: 'bg-green-500' },
-  { id: '3', title: 'Eventos en vivo', color: 'bg-purple-500' },
-  { id: '4', title: 'Hecho para ti', color: 'bg-blue-500' },
-  { id: '5', title: 'Novedades', color: 'bg-orange-500' },
-  { id: '6', title: 'Verano', color: 'bg-yellow-500' },
-  { id: '7', title: 'Pop', color: 'bg-pink-500' },
-  { id: '8', title: 'Rock', color: 'bg-indigo-500' },
-  { id: '9', title: 'Hip-Hop', color: 'bg-teal-500' },
-  { id: '10', title: 'Relax', color: 'bg-cyan-500' },
+  { id: '1', title: 'Música', color: 'bg-pink-600' },
+  { id: '2', title: 'Podcasts', color: 'bg-emerald-800' },
+  { id: '3', title: 'Eventos en vivo', color: 'bg-purple-700' },
+  { id: '4', title: 'Hecho para ti', color: 'bg-blue-950' },
+  { id: '5', title: 'Nuevos Lanzamientos', color: 'bg-lime-700' },
+  { id: '6', title: 'Latina', color: 'bg-blue-500' },
+  { id: '7', title: 'Pop', color: 'bg-slate-500' },
+  { id: '8', title: 'Hip-Hop', color: 'bg-indigo-500' },
+  { id: '9', title: 'Cumbia', color: 'bg-blue-400' },
+  { id: '10', title: 'Anime', color: 'bg-blue-500' },
 ];
 
 interface CategoryCardProps {
@@ -30,14 +30,14 @@ const SearchScreen = () => {
   );
 
   return (
-    <View className="flex-1 bg-black p-4">
+    <View className="flex-1 bg-zinc-950 p-4">
       {/* Encabezado */}
-      <CustomText variant="large" className="text-white font-bold mt-12 mb-4">Informacion</CustomText>
+      <CustomText variant="large" className="text-purple-500 font-bold mt-12 mb-4">Informacion</CustomText>
       
-      <View className="bg-gray-800 rounded-lg flex-row items-center p-2 mb-4">
-        <CustomText className="text-white mx-2 text-xl">Esta es una pagina creada por Ricardo Arias, si estas viendo esto significa que o eres el milo o q andas de metiche en mi github, sea cual sea de los 2 escribir esto me dio pereza asi q tienes esto en lugar de verdadera informacion</CustomText>
+      <View className="bg-zinc-800 rounded-lg flex-row items-center p-2 mb-4">
+        <CustomText className="text-zinc-400 mx-2 text-xl">Esta es una pagina creada por Ricardo Arias, si estas viendo esto significa que o eres el milo o q andas de metiche en mi github, sea cual sea de los 2 escribir esto me dio pereza asi q tienes esto en lugar de verdadera informacion</CustomText>
       </View>
-      <CustomText variant="medium" className="text-white font-bold mb-2">Explorar todo</CustomText>
+      <CustomText variant="medium" className="text-purple-500 font-bold mb-2">Explorar todo</CustomText>
       <FlatList
         data={categories}
         renderItem={({ item }) => <CategoryCard title={item.title} color={item.color} />}

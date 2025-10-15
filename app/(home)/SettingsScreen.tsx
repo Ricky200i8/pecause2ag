@@ -1,78 +1,106 @@
-import { View, TouchableOpacity, Switch } from 'react-native';
-import React, { useState } from 'react';
-import { useRouter } from 'expo-router';
-import CustomText from '../../components/CustomText';
+import { View, ScrollView, TouchableOpacity } from 'react-native';
+import React from 'react';
+import { MaterialIcons, Ionicons, FontAwesome } from '@expo/vector-icons';
+import CustomText from '@/components/CustomText';
 
-// Definimos la interfaz para las props del componente SettingsRow
-interface SettingsRowProps {
-  label: string;
-  children: React.ReactNode;
-}
-
-const SettingsScreen = () => {
-  const router = useRouter();
-  const [notifications, setNotifications] = useState(true);
-
-  // Aplicamos la interfaz de props al componente
-  const SettingsRow = ({ label, children }: SettingsRowProps) => (
-    <View className="flex-row justify-between items-center py-4 border-b border-gray-800">
-      <CustomText variant="medium" className="text-white">{label}</CustomText>
-      {children}
-    </View>
-  );
-
+const CuentaScreen = () => {
   return (
-    <View className="flex-1 bg-black p-6">
-      {/* Encabezado */}
-      <View className="flex-row items-center mt-8 mb-8">
-        <TouchableOpacity onPress={() => router.back()} className="pr-4">
-          <CustomText className="text-white text-2xl">←</CustomText>
-        </TouchableOpacity>
-        <CustomText variant="large" className="text-white font-bold">
-          Ajustes
+    <ScrollView className="flex-1 bg-[#121212] p-4">
+
+      {/* Plan */}
+      <View className="bg-[#1E1E1E] rounded-lg p-4 mb-4">
+      <View className="bg-neutral-700  rounded-full px-3 py-1 self-start">
+        <CustomText className="text-purple-500 text-sm font-bold">
+          Tu Plan
         </CustomText>
       </View>
-
-      {/* Sección de Cuenta */}
-      <View className="mb-8">
-        <CustomText variant="small" className="text-gray-400 mb-2">CUENTA</CustomText>
-        <SettingsRow label="Editar Perfil">
-          <CustomText variant="medium" className="text-gray-400">›</CustomText>
-        </SettingsRow>
-        <SettingsRow label="Cambiar Contraseña">
-          <CustomText variant="medium" className="text-gray-400">›</CustomText>
-        </SettingsRow>
-      </View>
-
-      {/* Sección de Notificaciones */}
-      <View className="mb-8">
-        <CustomText variant="small" className="text-gray-400 mb-2">NOTIFICACIONES</CustomText>
-        <SettingsRow label="Nuevos Lanzamientos">
-          <Switch
-            value={notifications}
-            onValueChange={setNotifications}
-            trackColor={{ false: "#767577", true: "#b11f32" }}
-            thumbColor={notifications ? "#ffffff" : "#f4f3f4"}
-          />
-        </SettingsRow>
-      </View>
-      
-      {/* Sección de Acerca de */}
-      <View>
-        <CustomText variant="small" className="text-gray-400 mb-2">ACERCA DE</CustomText>
-        <SettingsRow label="Términos de Servicio">
-          <CustomText variant="medium" className="text-gray-400">›</CustomText>
-        </SettingsRow>
-        <SettingsRow label="Política de Privacidad">
-          <CustomText variant="medium" className="text-gray-400">›</CustomText>
-        </SettingsRow>
-         <SettingsRow label="Versión">
-          <CustomText variant="medium" className="text-gray-400">1.0.0</CustomText>
-        </SettingsRow>
-      </View>
-
+        <CustomText className="text-[#E0E0E0] text-lg font-bold mt-2 mb-1">
+          Familiar (plan anterior)
+        </CustomText>
+        <CustomText className="text-[#B0B0B0] text-sm">
+          Eres miembro de un plan Familiar.
+        </CustomText>
     </View>
+
+      {/* Cuenta */}
+      <View className="mb-6">
+        <CustomText className="text-purple-500 text-base font-bold mb-2">
+          Cuenta
+        </CustomText>
+        <TouchableOpacity className="flex-row items-center bg-[#1E1E1E] py-3 px-3 rounded-lg mb-2">
+          <MaterialIcons name="edit" size={22} color="#ccc" />
+          <CustomText className="flex-1 text-[#ccc] ml-3 text-sm">
+            Editar información personal
+          </CustomText>
+          <Ionicons name="chevron-forward" size={22} color="#ccc" />
+        </TouchableOpacity>
+        <TouchableOpacity className="flex-row items-center bg-[#1E1E1E] py-3 px-3 rounded-lg mb-2">
+          <Ionicons name="reload" size={22} color="#ccc" />
+          <CustomText className="flex-1 text-[#ccc] ml-3 text-sm">
+            Restaurar playlists
+          </CustomText>
+          <Ionicons name="chevron-forward" size={22} color="#ccc" />
+        </TouchableOpacity>
+      </View>
+
+      {/* Suscripción */}
+      <View className="mb-6">
+        <CustomText className="text-purple-500 text-base font-bold mb-2">
+          Suscripción
+        </CustomText>
+        <TouchableOpacity className="flex-row items-center bg-[#1E1E1E] py-3 px-3 rounded-lg mb-2">
+          <FontAwesome name="spotify" size={22} color="#ccc" />
+          <CustomText className="flex-1 text-[#ccc] ml-3 text-sm">
+            Administrar tu suscripción
+          </CustomText>
+          <Ionicons name="chevron-forward" size={22} color="#ccc" />
+        </TouchableOpacity>
+        <TouchableOpacity className="flex-row items-center bg-[#1E1E1E] py-3 px-3 rounded-lg mb-2">
+          <Ionicons name="person-add" size={22} color="#ccc" />
+          <CustomText className="flex-1 text-[#ccc] ml-3 text-sm">
+            Administrar miembros
+          </CustomText>
+          <Ionicons name="chevron-forward" size={22} color="#ccc" />
+        </TouchableOpacity>
+        <TouchableOpacity className="flex-row items-center bg-[#1E1E1E] py-3 px-3 rounded-lg mb-2">
+          <Ionicons name="close" size={22} color="#ccc" />
+          <CustomText className="flex-1 text-[#ccc] ml-3 text-sm">
+            Cancelar suscripción
+          </CustomText>
+          <Ionicons name="chevron-forward" size={22} color="#ccc" />
+        </TouchableOpacity>
+      </View>
+
+      {/* Pago */}
+      <View className="mb-6">
+        <CustomText className="text-purple-500 text-base font-bold mb-2">
+          Pago
+        </CustomText>
+        <TouchableOpacity className="flex-row items-center bg-[#1E1E1E] py-3 px-3 rounded-lg mb-2">
+          <Ionicons name="receipt" size={22} color="#ccc" />
+          <CustomText className="flex-1 text-[#ccc] ml-3 text-sm">
+            Historial de pedidos
+          </CustomText>
+          <Ionicons name="chevron-forward" size={22} color="#ccc" />
+        </TouchableOpacity>
+        <TouchableOpacity className="flex-row items-center bg-[#1E1E1E] py-3 px-3 rounded-lg mb-2">
+          <Ionicons name="card" size={22} color="#ccc" />
+          <CustomText className="flex-1 text-[#ccc] ml-3 text-sm">
+            Tarjetas de pago guardadas
+          </CustomText>
+          <Ionicons name="chevron-forward" size={22} color="#ccc" />
+        </TouchableOpacity>
+        <TouchableOpacity className="flex-row items-center bg-[#1E1E1E] py-3 px-3 rounded-lg mb-2">
+          <Ionicons name="pricetag" size={22} color="#ccc" />
+          <CustomText className="flex-1 text-[#ccc] ml-3 text-sm">
+            Utilizar
+          </CustomText>
+          <Ionicons name="chevron-forward" size={22} color="#ccc" />
+        </TouchableOpacity>
+      </View>
+
+    </ScrollView>
   );
 };
 
-export default SettingsScreen;
+export default CuentaScreen;

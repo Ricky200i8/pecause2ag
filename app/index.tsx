@@ -53,7 +53,8 @@ export default function Index() {
 
   return (
     <ImageBackground
-      className="flex-1 w-screen h-screen justify-center items-center"
+      className="flex-1 justify-start items-center bg-black"
+      style={{ width: "100%", height: "100%" }}
     >
       {loging ? (
         <LoginDetails
