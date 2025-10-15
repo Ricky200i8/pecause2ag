@@ -1,0 +1,56 @@
+
+import { View, TouchableOpacity } from 'react-native'
+import React from 'react'
+import CustomText from './CustomText'
+import CustomTextInput from './CustomTextInput'
+import { Feather } from '@expo/vector-icons';
+import CustomButton from './CustomButton';
+
+interface LoginDetailsProps {
+    fullName: string;
+    setFullName: (text: string) => void;
+    password: string;
+    setPassword: (text: string) => void;
+    rememberMe: boolean;
+    setRememberMe: (value: boolean) => void;
+    onAccessPress: () => void;
+    onSignUpPress: () => void;
+}
+
+const LoginDetails = ({ 
+    fullName, 
+    setFullName, 
+    password, 
+    setPassword, 
+    rememberMe, 
+    setRememberMe, 
+    onAccessPress, 
+
+    onSignUpPress 
+}: LoginDetailsProps) => {
+  return (
+    <View className="bg-[#b8b3b3] absolute bottom-0 h-[70%] w-full rounded-tl-[60px] p-8 items-center">
+        <CustomText variant='large' className='text-black font-bold'>Bienvenido de vuelta!</CustomText>
+        <CustomText variant='small' className='text-[#666666]'>Accede a tu cuenta</CustomText>
+        <View className="w-full mt-6">
+            <CustomTextInput placeholder='Pepe Perez' iconName='user' value={fullName} onChangeText={setFullName}/>
+            <CustomTextInput placeholder='Pepe1234' iconName='lock' isPassword={true} value={password} onChangeText={setPassword}/>
+        </View>
+        <View className="flex-row justify-between w-full mt-3">
+            <TouchableOpacity onPress={() => setRememberMe(!rememberMe)} className="flex-row items-center">
+                <Feather name={rememberMe ? "check-circle" : "circle"} size={20} color="#b11f32" />
+                <CustomText variant='small' className='text-black ml-2'>Recuerdame</CustomText>
+            </TouchableOpacity>
+        </View>
+        <CustomButton label='Iniciar Sesión' onPress={onAccessPress}/>
+        <View className="flex-row items-center mt-4">
+            <CustomText variant='small' className="text-[#666666]">¿No tienes una cuenta? </CustomText>
+            <TouchableOpacity onPress={onSignUpPress}>
+                <CustomText variant='small' className="text-[#b11f32] font-bold">Registrarse</CustomText>
+            </TouchableOpacity>
+        </View>
+    </View>
+  )
+}
+
+export default LoginDetails

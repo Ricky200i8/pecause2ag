@@ -1,37 +1,33 @@
-import { View, Text } from 'react-native'
+import { Text } from 'react-native'
 import React from 'react'
 
-interface CustomTextProps{
-    variant:"small"|"medium"|"large";
-    dark?:boolean;
-    children:React.ReactNode;
+interface CustomTextProps {
+    children: React.ReactNode;
+    variant?: 'large' | 'medium' | 'small';
+    className?: string;
 }
 
-const CustomText = ({variant, dark=false, children}:CustomTextProps) => {
+const CustomText = ({ children, variant, className }: CustomTextProps) => {
+
+    const getFontSize = () => {
+        if (!variant) return ''; // Si no hay variante, no se aplica un tamaño de fuente base
+        switch (variant) {
+            case 'large':
+                return 'text-4xl';
+            case 'medium':
+                return 'text-lg';
+            case 'small':
+                return 'text-base';
+            default:
+                return 'text-base';
+        }
+    }
+
   return (
-      <Text className={StyleSelector(variant, dark)}>
-        {children}
-      </Text>
+    <Text className={`${getFontSize()} ${className || ''}`.trim()}>
+      {children}
+    </Text>
   )
 }
-
-function StyleSelector(variant:any, dark:boolean){
-    let style=""
-    if(dark==true){
-        style+= "text-white "
-    }else{
-        style+= "text-[#0F626F] "
-    }
-
-    switch(variant){
-        case "small":
-            return style + " font-semibold text-sm"
-        case "medium":
-            return style + " font-semibold text-base"
-        case "large":
-            return style + " font-semibold text-xl"
-    }
-}
-
 
 export default CustomText
